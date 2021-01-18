@@ -1,0 +1,11 @@
+nav{
+    display: flex;
+    justify-content: space-around;
+    background: rgb(101, 101, 175);
+}
+
+ul>li{
+    display: inline-flex;
+    padding: 0px 10px;
+    color: aliceblue;
+}
