@@ -1,60 +1,62 @@
-import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import React from "react";
 // import { Form } from "react-boostrap/Form";
 const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            '& > *': {
-                margin: theme.spacing(1),
-                width: '25ch',
-            },
-        },
-        
-    }),
+  createStyles({
+    root: {
+      "& > *": {
+        margin: theme.spacing(1),
+        width: "25ch",
+      },
+    },
+  })
 );
-const TodoForm = ({setInputText,todos,setTodo,inputText}) => {
-    const classes = useStyles();
-    const inputTextHandler = (e) =>{
-           setInputText(e.target.value);
-           console.log(e.target.value);
+const TodoForm = ({ setInputText, todos, setTodo, inputText }) => {
+  const classes = useStyles();
+  const inputTextHandler = (e) => {
+    setInputText(e.target.value);
+    console.log(e.target.value);
+  };
 
-    };
+  const todoSubmitHandler = (e) => {
+    e.preventDefault();
 
-    const todoSubmitHandler = (e) => {
-          e.preventDefault();
-         
-          setTodo([
-              ...todos,
-              {
-                  text: inputText,
-                  copleted: false,
-                  id: Math.random()*1000
-              }
-          ])
-          setInputText(" ");
-          console.log(todos);
-          
-    }
+    setTodo([
+      ...todos,
+      {
+        text: inputText,
+        copleted: false,
+        id: Math.random() * 1000,
+      },
+    ]);
+    setInputText(" ");
+    console.log(todos);
+  };
 
-    return (
-        <div>
+  return (
+    <div>
+      <form className={classes.root} noValidate autoComplete="off">
+        <TextField
+          id="standard-basic"
+          value={inputText}
+          label="Todo"
+          onChange={inputTextHandler}
+        />
 
-            <form className={classes.root}  noValidate autoComplete="off">
-                <TextField id="standard-basic" value={inputText} label="Todo" onChange={inputTextHandler}/>
-                
-                 <Button onClick={todoSubmitHandler} variant="contained" color="primary" size="small" type="submit" >
-                    Add
-                </Button> 
-                
-                
-            </form>
-  
+        <Button
+          onClick={todoSubmitHandler}
+          variant="contained"
+          color="primary"
+          size="small"
+          type="submit"
+        >
+          Submit
+        </Button>
+      </form>
+    </div>
+  );
+};
 
-
-        </div>
-    );
-}
-
-export default TodoForm
+export default TodoForm;
