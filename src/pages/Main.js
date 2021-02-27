@@ -32,4 +32,9 @@ const Main = () => {
 
 }
 
+var showGreetings = () =>{
+    console.log("Do something");
+    var text = "abcdefghijklmnopqrst";
+};
+
 export default Main;

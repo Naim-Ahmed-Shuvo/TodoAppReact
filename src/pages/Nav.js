@@ -3,10 +3,11 @@ import './style.css'
 import {Link} from 'react-router-dom';
 class Nav extends Component {
     render() {
-        const navStyle = {
+        const  navStyle = {
             color: "White",
             listStyle: "none",
         }
+        
         return (
             <div>
                 <nav>
